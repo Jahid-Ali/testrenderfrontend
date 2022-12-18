@@ -15,7 +15,7 @@ const App = () => {
   const addItem = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://testrender-1q33.onrender.com/api/item', { item: text })
+      const res = await axios.post('https://todolist-backend-hs0r.onrender.com/api/item', { item: text })
       console.log(res);
       setListItems(prev => [...prev, res.data]);
 
@@ -31,7 +31,7 @@ const App = () => {
   useEffect(() => {
     const getItemsList = async () => {
       try {
-        const res = await axios.get('https://testrender-1q33.onrender.com/api/item')
+        const res = await axios.get('https://todolist-backend-hs0r.onrender.com/api/item')
         setListItems(res.data);
 
         // console.log(res);
@@ -47,7 +47,7 @@ const App = () => {
   //Create a function to Delete item when click on delete
   const deleteItem = async (id) => {
     try {
-      const res = await axios.delete(`https://testrender-1q33.onrender.com/api/item/${id}`)
+      const res = await axios.delete(`https://todolist-backend-hs0r.onrender.com/api/item/${id}`)
       const newListItems = listItems.filter(item => item._id !== id);
       setListItems(newListItems);
       console.log(res.data);
@@ -61,7 +61,7 @@ const App = () => {
   const updateItem = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.put(`https://testrender-1q33.onrender.com/api/item/${isUpdating}`, { item: updateItemText })
+      const res = await axios.put(`https://todolist-backend-hs0r.onrender.com/api/item/${isUpdating}`, { item: updateItemText })
       console.log(res.data)
       const updatedItemIndex = listItems.findIndex(item => item._id === isUpdating);
       const updatedItem = listItems[updatedItemIndex].item = updateItemText;
